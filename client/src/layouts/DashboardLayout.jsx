@@ -74,7 +74,7 @@ const DashboardLayout = ({ children }) => {
   const links = getSidebarLinks();
 
   return (
-    <div className="min-h-screen bg-[#090d16] text-gray-100 flex flex-col md:flex-row relative">
+    <div className="min-h-screen bg-[#0c0d12] text-gray-100 flex flex-col md:flex-row relative">
       {/* Mobile Sidebar overlay */}
       {sidebarOpen && (
         <div
@@ -92,10 +92,10 @@ const DashboardLayout = ({ children }) => {
         {/* Sidebar Header Logo */}
         <div className="h-16 flex items-center justify-between px-6 border-b border-slate-800/80">
           <Link to="/" className="flex items-center gap-2">
-            <div className="bg-gradient-to-tr from-blue-600 to-indigo-500 p-1.5 rounded-lg text-white">
+            <div className="bg-blue-600 p-1.5 rounded-lg text-white">
               <School className="w-4.5 h-4.5" />
             </div>
-            <span className="text-lg font-bold font-display text-gradient">
+            <span className="text-lg font-bold font-display text-white">
               CampusHub
             </span>
           </Link>
@@ -109,21 +109,21 @@ const DashboardLayout = ({ children }) => {
 
         {/* User Card */}
         <div className="p-4 border-b border-slate-800/50">
-          <div className="flex items-center gap-3 bg-slate-900/40 p-2.5 rounded-xl border border-slate-800/30">
+          <div className="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/40">
             {user.profilePhoto ? (
               <img
                 src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
                 alt={user.name}
-                className="w-10 h-10 rounded-full object-cover border border-blue-500/30"
+                className="w-10 h-10 rounded-full object-cover border border-blue-500/20"
               />
             ) : (
-              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-white text-sm">
+              <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-sm">
                 {user.name.charAt(0).toUpperCase()}
               </div>
             )}
             <div className="overflow-hidden">
               <h4 className="font-semibold text-sm truncate text-gray-100">{user.name}</h4>
-              <span className="text-[10px] uppercase font-bold tracking-wider text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded">
+              <span className="text-[10px] uppercase font-bold tracking-wider text-blue-400 bg-blue-900/20 border border-blue-900/30 px-1.5 py-0.5 rounded">
                 {user.role}
               </span>
             </div>
@@ -172,7 +172,7 @@ const DashboardLayout = ({ children }) => {
       {/* Main Panel Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Header Navbar */}
-        <header className="h-16 border-b border-slate-800/80 bg-[#090d16]/80 backdrop-blur sticky top-0 z-30 flex items-center justify-between px-6">
+        <header className="h-16 border-b border-slate-800/80 bg-[#0c0d12]/80 backdrop-blur sticky top-0 z-30 flex items-center justify-between px-6">
           <div className="flex items-center gap-4">
             <button
               className="md:hidden text-gray-400 hover:text-white p-1 rounded-lg hover:bg-slate-800/50"
@@ -207,7 +207,7 @@ const DashboardLayout = ({ children }) => {
                   className="w-8 h-8 rounded-full object-cover border border-slate-700 group-hover:border-blue-500 transition-colors"
                 />
               ) : (
-                <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-600 to-indigo-500 flex items-center justify-center font-bold text-white text-xs group-hover:scale-105 transition-transform">
+                <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white text-xs group-hover:scale-102 transition-transform">
                   {user.name.charAt(0).toUpperCase()}
                 </div>
               )}

@@ -101,9 +101,7 @@ const Register = () => {
   return (
     <MainLayout>
       <div className="min-h-[85vh] flex items-center justify-center px-4 py-12 relative">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="w-full max-w-lg glassmorphism p-8 rounded-2xl border border-slate-800/80 shadow-2xl relative z-10">
+        <div className="w-full max-w-lg glassmorphism p-8 rounded-2xl border border-slate-800 shadow-2xl relative z-10">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold font-display text-gray-100">Create Account</h2>
             <p className="text-gray-400 text-sm mt-1">Join the CampusHub college portal</p>
@@ -138,7 +136,7 @@ const Register = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="John Doe"
                 />
               </div>
@@ -156,7 +154,7 @@ const Register = () => {
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="john@school.edu"
                   />
                 </div>
@@ -173,7 +171,7 @@ const Register = () => {
                     required
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                     placeholder="••••••••"
                   />
                 </div>
@@ -186,7 +184,7 @@ const Register = () => {
                 <select
                   value={role}
                   onChange={(e) => setRole(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-slate-955 border border-slate-800 text-gray-200 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-250 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                 >
                   <option value="student">Student</option>
                   <option value="faculty">Faculty</option>
@@ -206,7 +204,7 @@ const Register = () => {
                     <select
                       value={department}
                       onChange={(e) => setDepartment(e.target.value)}
-                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-955 border border-slate-800 text-gray-200 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                      className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-250 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                     >
                       <option value="">Select Department</option>
                       {departmentsList.map((dep) => (
@@ -232,7 +230,7 @@ const Register = () => {
                   <select
                     value={semester}
                     onChange={(e) => setSemester(e.target.value)}
-                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-955 border border-slate-800 text-gray-200 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                    className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-250 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                   >
                     {[1, 2, 3, 4, 5, 6, 7, 8].map((s) => (
                       <option key={s} value={s}>
@@ -247,7 +245,7 @@ const Register = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 hover:-translate-y-0.5 transition-all duration-200 disabled:opacity-50 disabled:pointer-events-none"
+              className="w-full py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 transition-colors disabled:opacity-50 disabled:pointer-events-none"
             >
               {loading ? (
                 <div className="w-5 h-5 animate-spin rounded-full border-2 border-white border-t-transparent" />

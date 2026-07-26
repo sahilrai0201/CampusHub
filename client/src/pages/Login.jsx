@@ -57,10 +57,7 @@ const Login = () => {
   return (
     <MainLayout>
       <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 relative">
-        {/* Ambient background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-
-        <div className="w-full max-w-md glassmorphism p-8 rounded-2xl border border-slate-800/80 shadow-2xl relative z-10">
+        <div className="w-full max-w-md glassmorphism p-8 rounded-2xl border border-slate-800 shadow-2xl relative z-10">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold font-display text-gray-100">Welcome Back</h2>
             <p className="text-gray-400 text-sm mt-1">Sign in to access your CampusHub dashboard</p>
@@ -85,7 +82,7 @@ const Login = () => {
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="name@school.edu"
                 />
               </div>
@@ -103,7 +100,7 @@ const Login = () => {
                   type="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-950/60 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
+                  className="w-full pl-11 pr-4 py-3 rounded-xl bg-slate-900 border border-slate-800 text-gray-100 text-sm focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="••••••••"
                 />
               </div>

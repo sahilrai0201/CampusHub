@@ -45,32 +45,28 @@ const StudentDashboard = () => {
       title: 'My Attendance',
       value: stats.attendancePercentage !== null ? `${stats.attendancePercentage.toFixed(1)}%` : '0.0%',
       icon: ClipboardList,
-      color: 'from-blue-600 to-indigo-500',
-      shadow: 'shadow-blue-500/10',
+      iconClass: 'bg-blue-600/10 text-blue-400',
       link: '/student/attendance',
     },
     {
       title: 'Pending Tasks',
       value: stats.pendingAssignments,
       icon: Clock,
-      color: 'from-orange-600 to-pink-500',
-      shadow: 'shadow-orange-500/10',
+      iconClass: 'bg-orange-600/10 text-orange-400',
       link: '/student/assignments',
     },
     {
       title: 'Submissions Made',
       value: stats.submittedAssignments,
       icon: CheckSquare,
-      color: 'from-emerald-600 to-teal-500',
-      shadow: 'shadow-emerald-500/10',
+      iconClass: 'bg-emerald-600/10 text-emerald-400',
       link: '/student/assignments',
     },
     {
       title: 'Download Notes',
       value: stats.totalNotes,
       icon: FileText,
-      color: 'from-purple-600 to-violet-500',
-      shadow: 'shadow-purple-500/10',
+      iconClass: 'bg-purple-600/10 text-purple-400',
       link: '/student/notes',
     },
   ];
@@ -79,10 +75,7 @@ const StudentDashboard = () => {
     <DashboardLayout>
       <div className="space-y-8">
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-900/20 via-indigo-950/10 to-transparent p-6 rounded-2xl border border-blue-500/10 relative overflow-hidden">
-          <div className="absolute top-1/2 right-10 -translate-y-1/2 text-blue-500/10 pointer-events-none">
-            <Sparkles className="w-36 h-36" />
-          </div>
+        <div className="bg-slate-900/40 p-6 rounded-2xl border border-slate-800 relative overflow-hidden">
           <h1 className="text-2xl font-bold font-display text-gray-100">Welcome to CampusHub</h1>
           <p className="text-gray-400 text-sm mt-1 max-w-xl">
             Access study PDFs uploaded by teachers, complete pending home projects, check attendance targets, and view notices.
@@ -104,17 +97,16 @@ const StudentDashboard = () => {
               <Link
                 key={idx}
                 to={card.link}
-                className="dashboard-card glassmorphism p-6 rounded-2xl border border-slate-800/80 shadow-lg relative overflow-hidden group block"
+                className="dashboard-card glassmorphism p-6 rounded-2xl border border-slate-800 shadow-md relative overflow-hidden group block animate-fade-in"
               >
-                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-300 pointer-events-none`} />
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">{card.title}</span>
-                  <div className={`p-2.5 rounded-xl bg-gradient-to-tr ${card.color} text-white shadow-lg ${card.shadow}`}>
+                  <div className={`p-2.5 rounded-xl ${card.iconClass}`}>
                     <Icon className="w-5 h-5" />
                   </div>
                 </div>
                 {loading ? (
-                  <div className="h-9 w-16 bg-slate-850 animate-pulse rounded" />
+                  <div className="h-9 w-16 bg-slate-800 animate-pulse rounded" />
                 ) : (
                   <h3 className="text-3xl font-bold text-gray-100 font-display tracking-tight">{card.value}</h3>
                 )}

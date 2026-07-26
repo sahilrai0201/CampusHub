@@ -45,32 +45,28 @@ const FacultyDashboard = () => {
       title: 'Assigned Subjects',
       value: stats.subjectsCount,
       icon: BookOpen,
-      color: 'from-blue-600 to-indigo-500',
-      shadow: 'shadow-blue-500/10',
+      iconClass: 'bg-blue-600/10 text-blue-400',
       link: '/faculty/subjects',
     },
     {
       title: 'Total Students',
       value: stats.studentsCount,
       icon: Users,
-      color: 'from-purple-600 to-pink-500',
-      shadow: 'shadow-purple-500/10',
+      iconClass: 'bg-purple-600/10 text-purple-400',
       link: '/faculty/subjects', // Directs to list of subjects/students
     },
     {
       title: 'Uploaded Notes',
       value: stats.notesCount,
       icon: FileText,
-      color: 'from-emerald-600 to-teal-500',
-      shadow: 'shadow-emerald-500/10',
+      iconClass: 'bg-emerald-600/10 text-emerald-400',
       link: '/faculty/notes',
     },
     {
       title: 'Active Assignments',
       value: stats.assignmentsCount,
       icon: CheckSquare,
-      color: 'from-orange-600 to-amber-500',
-      shadow: 'shadow-orange-500/10',
+      iconClass: 'bg-amber-600/10 text-amber-400',
       link: '/faculty/assignments',
     },
   ];
@@ -99,17 +95,16 @@ const FacultyDashboard = () => {
               <Link
                 key={idx}
                 to={card.link}
-                className="dashboard-card glassmorphism p-6 rounded-2xl border border-slate-800/80 shadow-lg relative overflow-hidden group block"
+                className="dashboard-card glassmorphism p-6 rounded-2xl border border-slate-800 shadow-md relative overflow-hidden group block animate-fade-in"
               >
-                <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${card.color} opacity-0 group-hover:opacity-10 rounded-bl-full transition-opacity duration-300 pointer-events-none`} />
                 <div className="flex items-center justify-between mb-4">
                   <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">{card.title}</span>
-                  <div className={`p-2.5 rounded-xl bg-gradient-to-tr ${card.color} text-white shadow-lg ${card.shadow}`}>
+                  <div className={`p-2.5 rounded-xl ${card.iconClass}`}>
                     <Icon className="w-5 h-5" />
                   </div>
                 </div>
                 {loading ? (
-                  <div className="h-9 w-16 bg-slate-850 animate-pulse rounded" />
+                  <div className="h-9 w-16 bg-slate-800 animate-pulse rounded" />
                 ) : (
                   <h3 className="text-3xl font-bold text-gray-100 font-display tracking-tight">{card.value}</h3>
                 )}

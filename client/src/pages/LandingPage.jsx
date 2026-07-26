@@ -53,18 +53,14 @@ const LandingPage = () => {
   return (
     <MainLayout>
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-36 bg-[#0b0f19]">
-        {/* Glow Spheres */}
-        <div className="absolute top-1/4 left-1/10 w-96 h-96 bg-blue-500/10 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-1/4 right-1/10 w-96 h-96 bg-indigo-500/10 rounded-full blur-[120px] pointer-events-none" />
-
+      <section className="relative overflow-hidden pt-20 pb-28 md:pt-28 md:pb-36 bg-[#0c0d12]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400 mb-6 animate-pulse">
-            <GraduationCap className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-800/80 border border-slate-700/60 text-xs font-semibold text-gray-300 mb-6">
+            <GraduationCap className="w-3.5 h-3.5 text-blue-400" />
             Introducing CampusHub v1.0
           </div>
           
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-display text-gradient mb-6 max-w-4xl mx-auto leading-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight font-display text-white mb-6 max-w-4xl mx-auto leading-tight">
             Simplify College Management and Academic Operations
           </h1>
           
@@ -75,14 +71,14 @@ const LandingPage = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <Link
               to="/login"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-xl shadow-blue-500/20 transition-all duration-300 hover:-translate-y-0.5"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold bg-blue-600 hover:bg-blue-700 text-white shadow-md shadow-blue-500/10 transition-colors"
             >
               Get Started
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="#features"
-              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold border border-slate-700/80 hover:bg-slate-800/40 text-gray-300 hover:text-white transition-all duration-300"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl font-bold border border-slate-800 bg-slate-900/40 hover:bg-slate-800 text-gray-300 hover:text-white transition-colors"
             >
               Learn More
             </a>
@@ -91,7 +87,7 @@ const LandingPage = () => {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="py-20 border-t border-slate-900 bg-[#090d16]">
+      <section id="features" className="py-20 border-t border-slate-900 bg-[#0a0c10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold font-display text-gray-100">Key Platform Features</h2>
@@ -102,7 +98,7 @@ const LandingPage = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Feature 1 */}
-            <div className="p-8 rounded-2xl glassmorphism hover:border-blue-500/40 transition-all duration-300 hover:-translate-y-1">
+            <div className="p-8 rounded-2xl glassmorphism hover:border-blue-500/40 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-blue-400 mb-6">
                 <Shield className="w-6 h-6" />
               </div>
@@ -113,7 +109,7 @@ const LandingPage = () => {
             </div>
 
             {/* Feature 2 */}
-            <div className="p-8 rounded-2xl glassmorphism hover:border-indigo-500/40 transition-all duration-300 hover:-translate-y-1">
+            <div className="p-8 rounded-2xl glassmorphism hover:border-indigo-500/40 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 mb-6">
                 <UploadCloud className="w-6 h-6" />
               </div>
@@ -124,7 +120,7 @@ const LandingPage = () => {
             </div>
 
             {/* Feature 3 */}
-            <div className="p-8 rounded-2xl glassmorphism hover:border-pink-500/40 transition-all duration-300 hover:-translate-y-1">
+            <div className="p-8 rounded-2xl glassmorphism hover:border-pink-500/40 transition-colors">
               <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center text-pink-400 mb-6">
                 <ClipboardList className="w-6 h-6" />
               </div>
@@ -138,7 +134,7 @@ const LandingPage = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 border-t border-slate-900 bg-[#0b0f19]">
+      <section id="about" className="py-20 border-t border-slate-900 bg-[#0c0d12]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -171,9 +167,8 @@ const LandingPage = () => {
             </div>
 
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-indigo-500 rounded-3xl blur-2xl opacity-10 pointer-events-none" />
-              <div className="relative border border-slate-800/80 rounded-3xl p-6 md:p-8 bg-[#090d16]/90 shadow-2xl">
-                <h3 className="font-bold text-gray-200 text-lg mb-6 border-b border-slate-800/80 pb-4">Our Technology Stack</h3>
+              <div className="relative border border-slate-800/80 rounded-3xl p-6 md:p-8 bg-[#0a0c10]/90 shadow-2xl">
+                <h3 className="font-bold text-gray-200 text-lg mb-6 border-b border-slate-800 pb-4">Our Technology Stack</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="p-3 bg-slate-900/60 border border-slate-800/40 rounded-xl">
                     <span className="font-semibold text-blue-400">Frontend</span>
@@ -199,7 +194,7 @@ const LandingPage = () => {
       </section>
 
       {/* How It Works Section */}
-      <section id="how-it-works" className="py-20 border-t border-slate-900 bg-[#090d16]">
+      <section id="how-it-works" className="py-20 border-t border-slate-900 bg-[#0a0c10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl font-bold font-display text-gray-100">Simple 3-Step Process</h2>
@@ -246,7 +241,7 @@ const LandingPage = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 border-t border-slate-900 bg-[#0b0f19]">
+      <section id="faq" className="py-20 border-t border-slate-900 bg-[#0c0d12]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold font-display text-gray-100 font-sans">Frequently Asked Questions</h2>
@@ -257,17 +252,17 @@ const LandingPage = () => {
             {faqs.map((faq, idx) => (
               <div
                 key={idx}
-                className="border border-slate-800/80 rounded-xl bg-slate-900/30 overflow-hidden transition-colors"
+                className="border border-slate-800 rounded-xl bg-slate-900/30 overflow-hidden transition-colors"
               >
                 <button
-                  className="w-full flex items-center justify-between p-5 text-left font-semibold text-gray-200 hover:text-white hover:bg-slate-800/20 transition-all"
+                  className="w-full flex items-center justify-between p-5 text-left font-semibold text-gray-200 hover:text-white hover:bg-slate-800/20 transition-colors"
                   onClick={() => setActiveFaq(activeFaq === idx ? null : idx)}
                 >
                   <span>{faq.q}</span>
                   {activeFaq === idx ? <ChevronUp className="w-4 h-4 text-blue-400" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
                 </button>
                 {activeFaq === idx && (
-                  <div className="px-5 pb-5 pt-1 text-sm text-gray-400 leading-relaxed border-t border-slate-800/30 bg-slate-900/10">
+                  <div className="px-5 pb-5 pt-1 text-sm text-gray-400 leading-relaxed border-t border-slate-850 bg-slate-900/10">
                     {faq.a}
                   </div>
                 )}
@@ -278,7 +273,7 @@ const LandingPage = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 border-t border-slate-900 bg-[#090d16]">
+      <section id="contact" className="py-20 border-t border-slate-900 bg-[#0a0c10]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             <div className="lg:col-span-1">
