@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
 const dns = require('dns');
-dns.setDefaultResultOrder('ipv4first');
-try {
-  dns.setServers(['8.8.8.8', '1.1.1.1']);
-} catch (e) {
-  console.error('DNS override failed:', e.message);
-}
-
 const dotenv = require('dotenv');
 const path = require('path');
 const User = require('../models/User');
@@ -15,7 +8,32 @@ const Department = require('../models/Department');
 // Load env vars
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
+const configureDNS = async () => {
+  const primaryURI = process.env.MONGO_URI || '';
+  if (primaryURI.startsWith('mongodb+srv://')) {
+    try {
+      const hostPart = primaryURI.split('@')[1]?.split('/')[0]?.split('?')[0];
+      if (hostPart) {
+        await dns.promises.resolveTxt(`_mongodb._tcp.${hostPart}`);
+        console.log('DNS resolution succeeded with default system DNS.');
+        return;
+      }
+    } catch (err) {
+      console.warn(`Default system DNS failed to resolve host: ${err.message}. Applying fallback public DNS servers...`);
+    }
+  }
+  
+  try {
+    dns.setServers(['8.8.8.8', '1.1.1.1']);
+    console.log('DNS fallback configured using public servers (8.8.8.8, 1.1.1.1)');
+  } catch (e) {
+    console.error('DNS override failed:', e.message);
+  }
+};
+
+
 const seedData = async () => {
+  await configureDNS();
   const primaryURI = process.env.MONGO_URI || 'mongodb://localhost:27017/campushub';
   const localURI = 'mongodb://127.0.0.1:27017/campushub';
 
