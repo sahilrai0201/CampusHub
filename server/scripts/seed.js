@@ -16,10 +16,25 @@ const Department = require('../models/Department');
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 const seedData = async () => {
+  const primaryURI = process.env.MONGO_URI || 'mongodb://localhost:27017/campushub';
+  const localURI = 'mongodb://127.0.0.1:27017/campushub';
+
   try {
     // Connect to database
-    await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/campushub');
-    console.log('MongoDB connected for seeding...');
+    try {
+      console.log('Connecting to primary MongoDB database for seeding...');
+      await mongoose.connect(primaryURI, { serverSelectionTimeoutMS: 5000 });
+      console.log('MongoDB connected (Primary) for seeding...');
+    } catch (error) {
+      console.warn(`Primary connection failed: ${error.message}`);
+      if (primaryURI !== localURI && primaryURI !== 'mongodb://127.0.0.1:27017/campushub') {
+        console.log('Attempting fallback to local MongoDB database for seeding...');
+        await mongoose.connect(localURI, { serverSelectionTimeoutMS: 3000 });
+        console.log('MongoDB connected (Local Fallback) for seeding...');
+      } else {
+        throw error;
+      }
+    }
 
     // Clear existing data (optional, but keep admins & departments clean for seeding)
     // For safety, let's just make sure we don't duplicate.
