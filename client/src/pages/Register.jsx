@@ -24,12 +24,6 @@ const Register = () => {
   // Fetch departments list
   useEffect(() => {
     const fetchDepartments = async () => {
-      try {
-        const res = await api.get('/auth/profile'); // Just test endpoint or departments
-      } catch (err) {
-        // Safe to ignore, we can fetch departments using dynamic endpoints
-      }
-
       // Populate departments list from DB, fallback if empty
       try {
         const res = await api.get('/auth/departments'); // Public departments endpoint

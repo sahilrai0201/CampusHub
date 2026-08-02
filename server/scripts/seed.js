@@ -8,21 +8,8 @@ const Department = require('../models/Department');
 // Load env vars
 dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
-const configureDNS = async () => {
-  const primaryURI = process.env.MONGO_URI || '';
-  if (primaryURI.startsWith('mongodb+srv://')) {
-    try {
-      const hostPart = primaryURI.split('@')[1]?.split('/')[0]?.split('?')[0];
-      if (hostPart) {
-        await dns.promises.resolveTxt(`_mongodb._tcp.${hostPart}`);
-        console.log('DNS resolution succeeded with default system DNS.');
-        return;
-      }
-    } catch (err) {
-      console.warn(`Default system DNS failed to resolve host: ${err.message}. Applying fallback public DNS servers...`);
-    }
-  }
-  
+// Function to configure fallback DNS servers globally
+const applyFallbackDNS = () => {
   try {
     dns.setServers(['8.8.8.8', '1.1.1.1']);
     console.log('DNS fallback configured using public servers (8.8.8.8, 1.1.1.1)');
@@ -31,26 +18,56 @@ const configureDNS = async () => {
   }
 };
 
+// Check if an error is DNS-related
+const isDNSError = (err) => {
+  const code = err.code || '';
+  const message = err.message || '';
+  return (
+    code === 'ENOTFOUND' ||
+    code === 'EAI_AGAIN' ||
+    message.includes('querySrv') ||
+    message.includes('queryTxt') ||
+    message.includes('ECONNREFUSED')
+  );
+};
+
 
 const seedData = async () => {
-  await configureDNS();
   const primaryURI = process.env.MONGO_URI || 'mongodb://localhost:27017/campushub';
   const localURI = 'mongodb://127.0.0.1:27017/campushub';
 
   try {
     // Connect to database
+    let connected = false;
     try {
       console.log('Connecting to primary MongoDB database for seeding...');
       await mongoose.connect(primaryURI, { serverSelectionTimeoutMS: 5000 });
       console.log('MongoDB connected (Primary) for seeding...');
+      connected = true;
     } catch (error) {
       console.warn(`Primary connection failed: ${error.message}`);
+      
+      // If error is DNS-related, try public DNS fallback and reconnect
+      if (isDNSError(error)) {
+        console.log('Detected DNS-related error. Applying public DNS fallback and retrying...');
+        applyFallbackDNS();
+        try {
+          await mongoose.connect(primaryURI, { serverSelectionTimeoutMS: 5000 });
+          console.log('MongoDB connected (Primary - Retry with Fallback DNS) for seeding...');
+          connected = true;
+        } catch (retryError) {
+          console.warn(`Primary connection failed after DNS fallback: ${retryError.message}`);
+        }
+      }
+    }
+
+    if (!connected) {
       if (primaryURI !== localURI && primaryURI !== 'mongodb://127.0.0.1:27017/campushub') {
         console.log('Attempting fallback to local MongoDB database for seeding...');
         await mongoose.connect(localURI, { serverSelectionTimeoutMS: 3000 });
         console.log('MongoDB connected (Local Fallback) for seeding...');
       } else {
-        throw error;
+        throw new Error('Could not connect to primary database and local fallback is not applicable');
       }
     }
 
