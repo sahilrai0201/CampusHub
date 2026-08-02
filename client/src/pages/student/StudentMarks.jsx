@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
-import api from '../../services/api';
+import api, { FILE_BASE_URL } from '../../services/api';
 import { 
   GraduationCap, 
   Award, 
@@ -291,7 +291,7 @@ const StudentMarks = () => {
                                   <span className="text-xs text-gray-500">/100</span>
                                   {asn.submission.file && (
                                     <a
-                                      href={`http://localhost:5000${asn.submission.file}`}
+                                      href={`${FILE_BASE_URL}${asn.submission.file}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
                                       className="ml-2 text-indigo-400 hover:text-indigo-300"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
-import api from '../../services/api';
+import api, { FILE_BASE_URL } from '../../services/api';
 import { FileText, Download, Search, AlertCircle, Loader } from 'lucide-react';
 
 const StudentNotes = () => {
@@ -139,7 +139,7 @@ const StudentNotes = () => {
                   </span>
                   
                   <a
-                    href={`http://localhost:5000${note.file}`}
+                    href={`${FILE_BASE_URL}${note.file}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1 px-3.5 py-1.5 rounded-xl bg-blue-600/10 hover:bg-blue-600 text-blue-400 hover:text-white text-xs font-semibold transition-all"

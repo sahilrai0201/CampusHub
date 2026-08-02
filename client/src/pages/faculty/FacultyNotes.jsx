@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
-import api from '../../services/api';
+import api, { FILE_BASE_URL } from '../../services/api';
 import { Plus, Trash2, FileText, CheckCircle, AlertCircle, Loader, Download } from 'lucide-react';
 
 const FacultyNotes = () => {
@@ -229,7 +229,7 @@ const FacultyNotes = () => {
                         
                         <div className="flex gap-2">
                           <a
-                            href={`http://localhost:5000${note.file}`}
+                            href={`${FILE_BASE_URL}${note.file}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"

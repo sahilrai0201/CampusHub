@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import DashboardLayout from '../layouts/DashboardLayout';
 import useAuth from '../hooks/useAuth';
+import { FILE_BASE_URL } from '../services/api';
 import { User, Mail, Shield, Key, Image, Calendar, CheckCircle2, AlertCircle } from 'lucide-react';
 
 const Profile = () => {
@@ -94,7 +95,7 @@ const Profile = () => {
               <div className="relative w-28 h-28 mx-auto mb-4 group">
                 {user.profilePhoto ? (
                   <img
-                    src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
+                    src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `${FILE_BASE_URL}${user.profilePhoto}`}
                     alt={user.name}
                     className="w-full h-full rounded-full object-cover border-2 border-blue-500/40"
                   />

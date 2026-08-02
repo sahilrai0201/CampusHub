@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
+import { FILE_BASE_URL } from '../services/api';
 import {
   LayoutDashboard,
   Users,
@@ -112,7 +113,7 @@ const DashboardLayout = ({ children }) => {
           <div className="flex items-center gap-3 bg-slate-900/60 p-2.5 rounded-xl border border-slate-800/40">
             {user.profilePhoto ? (
               <img
-                src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
+                src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `${FILE_BASE_URL}${user.profilePhoto}`}
                 alt={user.name}
                 className="w-10 h-10 rounded-full object-cover border border-blue-500/20"
               />
@@ -202,7 +203,7 @@ const DashboardLayout = ({ children }) => {
             <Link to={`/${user.role}/profile`} className="flex items-center gap-2 group">
               {user.profilePhoto ? (
                 <img
-                  src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `http://localhost:5000${user.profilePhoto}`}
+                  src={user.profilePhoto.startsWith('http') ? user.profilePhoto : `${FILE_BASE_URL}${user.profilePhoto}`}
                   alt={user.name}
                   className="w-8 h-8 rounded-full object-cover border border-slate-700 group-hover:border-blue-500 transition-colors"
                 />

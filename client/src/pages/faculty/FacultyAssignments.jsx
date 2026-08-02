@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
-import api from '../../services/api';
+import api, { FILE_BASE_URL } from '../../services/api';
 import { Plus, Trash2, Calendar, FileText, CheckCircle, AlertCircle, Loader, Download, Eye, Award } from 'lucide-react';
 
 const FacultyAssignments = () => {
@@ -360,7 +360,7 @@ const FacultyAssignments = () => {
                             {sub.student?.email} • Submitted: {new Date(sub.submittedAt).toLocaleString()}
                           </span>
                           <a
-                            href={`http://localhost:5000${sub.file}`}
+                            href={`${FILE_BASE_URL}${sub.file}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 mt-2 text-xs text-indigo-400 hover:underline"

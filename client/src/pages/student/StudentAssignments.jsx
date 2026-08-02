@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DashboardLayout from '../../layouts/DashboardLayout';
-import api from '../../services/api';
+import api, { FILE_BASE_URL } from '../../services/api';
 import { FileText, Download, UploadCloud, CheckCircle2, AlertCircle, Loader, Clock, Award } from 'lucide-react';
 
 const StudentAssignments = () => {
@@ -148,7 +148,7 @@ const StudentAssignments = () => {
                         <>
                           <span>•</span>
                           <a
-                            href={`http://localhost:5000${asn.file}`}
+                            href={`${FILE_BASE_URL}${asn.file}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 text-indigo-400 hover:underline font-semibold"
@@ -168,7 +168,7 @@ const StudentAssignments = () => {
                         <div className="p-3 bg-slate-900/60 border border-slate-800/50 rounded-xl">
                           <span className="text-[10px] text-gray-400 uppercase tracking-wider font-semibold block">Submissions File</span>
                           <a
-                            href={`http://localhost:5000${asn.submission.file}`}
+                            href={`${FILE_BASE_URL}${asn.submission.file}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs text-indigo-400 hover:underline font-medium mt-1"
