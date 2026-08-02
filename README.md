@@ -164,15 +164,42 @@ Ensure you are in the project root: `CampusHub/`
 
 ---
 
-## ☁️ Deployment Guide
+## ☁️ Deployment Guide (Render)
 
-### Frontend → Vercel
-1. Set up a Vercel account and connect it to your GitHub repository.
-2. Set Build Command to `npm run build` and Output Directory to `dist`.
-3. Add Environment Variable `VITE_API_URL` pointing to your deployed backend URL.
+This project is optimized to be deployed on **Render** as two separate services:
+1. **Backend Web Service** (Node/Express API)
+2. **Frontend Static Site** (React/Vite SPA)
 
-### Backend → Render
-1. Create a Web Service on Render pointing to your backend repository.
-2. Build Command: `cd server && npm install`
-3. Start Command: `cd server && npm start`
-4. Add environment configurations (`MONGO_URI`, `JWT_SECRET`, `NODE_ENV=production`) inside Render Settings.
+---
+
+### Part 1: Backend Deployment (Web Service)
+1. Go to the [Render Dashboard](https://dashboard.render.com/) and click **New +** > **Web Service**.
+2. Connect your GitHub repository.
+3. Configure the following settings:
+   - **Name**: `campushub-backend`
+   - **Root Directory**: `server`
+   - **Build Command**: `npm install`
+   - **Start Command**: `npm start`
+   - **Instance Type**: `Free`
+4. Click **Advanced** and add the following **Environment Variables**:
+   - `NODE_ENV`: `production`
+   - `JWT_SECRET`: *(Any secure random key)*
+   - `MONGO_URI`: *(Your MongoDB Atlas connection URI)*
+     - *Note: Ensure your MongoDB Atlas cluster allows connections from anywhere (`0.0.0.0/0` in Network Access) since Render uses dynamic IPs.*
+5. Click **Deploy Web Service** and copy the live URL once generated (e.g. `https://campushub-backend.onrender.com`).
+
+---
+
+### Part 2: Frontend Deployment (Static Site)
+1. Click **New +** > **Static Site**.
+2. Connect the same GitHub repository.
+3. Configure the following settings:
+   - **Name**: `campushub`
+   - **Root Directory**: `client`
+   - **Build Command**: `npm install && npm run build`
+   - **Publish Directory**: `dist`
+4. Click **Advanced** and add the following **Environment Variables**:
+   - `VITE_SERVER_URL`: Paste your backend Web Service URL (e.g., `https://campushub-backend.onrender.com`).
+   - `VITE_API_URL`: Paste your backend Web Service URL + `/api` (e.g., `https://campushub-backend.onrender.com/api`).
+5. Click **Create Static Site**. Your frontend will be live on Render's CDN.
+
