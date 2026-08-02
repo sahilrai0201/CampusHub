@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 const dns = require('dns');
-const { MongoMemoryServer } = require('mongodb-memory-server');
 const User = require('../models/User');
 const Department = require('../models/Department');
 
@@ -100,6 +99,7 @@ const connectDB = async () => {
 const connectInMemory = async () => {
   try {
     console.log('Attempting to start local MongoDB in-memory database server...');
+    const { MongoMemoryServer } = require('mongodb-memory-server');
     memoryServerInstance = await MongoMemoryServer.create({
       instance: {
         dbName: 'campushub'
